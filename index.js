@@ -6,23 +6,23 @@
 import html2canvas from 'html2canvas';
 
 // Helper function to safely get elements by ID
-function getElementById<T extends HTMLElement>(id: string): T {
+function getElementById(id) {
     const element = document.getElementById(id);
     if (!element) {
         throw new Error(`Element with id "${id}" not found.`);
     }
-    return element as T;
+    return element;
 }
 
 // Helper function to read a file and update an image element's src
-function handleFileUpload(fileInput: HTMLInputElement, previewImg: HTMLImageElement, fileNameSpan: HTMLSpanElement) {
+function handleFileUpload(fileInput, previewImg, fileNameSpan) {
     const file = fileInput.files?.[0];
     if (file) {
         fileNameSpan.textContent = file.name;
         const reader = new FileReader();
         reader.onload = (e) => {
             if (e.target?.result) {
-                previewImg.src = e.target.result as string;
+                previewImg.src = e.target.result;
             }
         };
         reader.readAsDataURL(file);
@@ -33,59 +33,59 @@ function handleFileUpload(fileInput: HTMLInputElement, previewImg: HTMLImageElem
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    const form = getElementById<HTMLFormElement>('id-form');
-    const downloadBtn = getElementById<HTMLButtonElement>('download-btn');
-    const idCardElement = getElementById<HTMLDivElement>('id-card');
+    const form = getElementById('id-form');
+    const downloadBtn = getElementById('download-btn');
+    const idCardElement = getElementById('id-card');
 
     // --- Form Inputs ---
     // College
-    const collegeNameInput = getElementById<HTMLInputElement>('college-name');
-    const collegeTaglineInput = getElementById<HTMLInputElement>('college-tagline');
-    const collegeFooterInput = getElementById<HTMLInputElement>('college-footer');
-    const collegeLogoInput = getElementById<HTMLInputElement>('college-logo');
-    const collegeLogoName = getElementById<HTMLSpanElement>('college-logo-name');
+    const collegeNameInput = getElementById('college-name');
+    const collegeTaglineInput = getElementById('college-tagline');
+    const collegeFooterInput = getElementById('college-footer');
+    const collegeLogoInput = getElementById('college-logo');
+    const collegeLogoName = getElementById('college-logo-name');
 
     // Student
-    const nameInput = getElementById<HTMLInputElement>('name');
-    const studentIdInput = getElementById<HTMLInputElement>('student-id');
-    const mobileInput = getElementById<HTMLInputElement>('mobile');
-    const emergencyContactInput = getElementById<HTMLInputElement>('emergency-contact');
-    const departmentInput = getElementById<HTMLInputElement>('department');
-    const sessionInput = getElementById<HTMLInputElement>('session');
-    const bloodGroupInput = getElementById<HTMLInputElement>('blood-group');
-    const photoInput = getElementById<HTMLInputElement>('photo');
-    const fileNameSpan = getElementById<HTMLSpanElement>('file-name');
+    const nameInput = getElementById('name');
+    const studentIdInput = getElementById('student-id');
+    const mobileInput = getElementById('mobile');
+    const emergencyContactInput = getElementById('emergency-contact');
+    const departmentInput = getElementById('department');
+    const sessionInput = getElementById('session');
+    const bloodGroupInput = getElementById('blood-group');
+    const photoInput = getElementById('photo');
+    const fileNameSpan = getElementById('file-name');
 
     // Signature
-    const sigTypeText = getElementById<HTMLInputElement>('signature-type-type');
-    const sigTypeUpload = getElementById<HTMLInputElement>('signature-type-upload');
-    const sigTextInput = getElementById<HTMLInputElement>('signature-text');
-    const sigUploadInput = getElementById<HTMLInputElement>('signature-upload');
-    const sigTextGroup = getElementById<HTMLDivElement>('signature-text-group');
-    const sigUploadGroup = getElementById<HTMLDivElement>('signature-upload-group');
-    const sigUploadName = getElementById<HTMLSpanElement>('signature-upload-name');
+    const sigTypeText = getElementById('signature-type-type');
+    const sigTypeUpload = getElementById('signature-type-upload');
+    const sigTextInput = getElementById('signature-text');
+    const sigUploadInput = getElementById('signature-upload');
+    const sigTextGroup = getElementById('signature-text-group');
+    const sigUploadGroup = getElementById('signature-upload-group');
+    const sigUploadName = getElementById('signature-upload-name');
 
     // --- Preview Elements ---
     // College
-    const previewCollegeName = getElementById<HTMLElement>('preview-college-name');
-    const previewCollegeTagline = getElementById<HTMLElement>('preview-college-tagline');
-    const previewCollegeFooterName = getElementById<HTMLElement>('preview-college-footer-name');
-    const previewCollegeFooter = getElementById<HTMLElement>('preview-college-footer');
-    const previewLogo = getElementById<HTMLImageElement>('preview-logo');
+    const previewCollegeName = getElementById('preview-college-name');
+    const previewCollegeTagline = getElementById('preview-college-tagline');
+    const previewCollegeFooterName = getElementById('preview-college-footer-name');
+    const previewCollegeFooter = getElementById('preview-college-footer');
+    const previewLogo = getElementById('preview-logo');
 
     // Student
-    const previewName = getElementById<HTMLElement>('preview-name');
-    const previewStudentId = getElementById<HTMLElement>('preview-student-id');
-    const previewMobile = getElementById<HTMLElement>('preview-mobile');
-    const previewEmergencyContact = getElementById<HTMLElement>('preview-emergency-contact');
-    const previewDepartment = getElementById<HTMLElement>('preview-department');
-    const previewSession = getElementById<HTMLElement>('preview-session');
-    const previewBloodGroup = getElementById<HTMLElement>('preview-blood-group');
-    const previewPhoto = getElementById<HTMLImageElement>('preview-photo');
+    const previewName = getElementById('preview-name');
+    const previewStudentId = getElementById('preview-student-id');
+    const previewMobile = getElementById('preview-mobile');
+    const previewEmergencyContact = getElementById('preview-emergency-contact');
+    const previewDepartment = getElementById('preview-department');
+    const previewSession = getElementById('preview-session');
+    const previewBloodGroup = getElementById('preview-blood-group');
+    const previewPhoto = getElementById('preview-photo');
 
     // Signature
-    const previewSigText = getElementById<HTMLDivElement>('preview-signature-text');
-    const previewSigImg = getElementById<HTMLImageElement>('preview-signature-img');
+    const previewSigText = getElementById('preview-signature-text');
+    const previewSigImg = getElementById('preview-signature-img');
 
 
     function updatePreview() {
@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Finalize button handler
-    form.addEventListener('submit', (e: Event) => {
+    form.addEventListener('submit', (e) => {
         e.preventDefault();
         downloadBtn.disabled = false;
         idCardElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
