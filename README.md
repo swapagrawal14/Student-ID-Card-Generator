@@ -1,2 +1,14 @@
-# Student-ID-Card-Generator
-Want Digital Version of your Id card? Here's I've come up with a superb quick solution for you, fill your details, download the card as simple as that!
+# Run and deploy your AI Studio app
+
+This contains everything you need to run your app locally.
+
+## Run Locally
+
+**Prerequisites:**  Node.js
+
+
+1. Install dependencies:
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`
